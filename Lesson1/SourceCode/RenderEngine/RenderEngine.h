@@ -12,7 +12,7 @@ public:
 	CRenderEngine(const CRenderEngine& renderEngine) = delete;
 	~CRenderEngine();
 
-	void Update();
+	void Update(int counter);
 
 private:
 	HWND InitMainWindow(HINSTANCE hInstance);

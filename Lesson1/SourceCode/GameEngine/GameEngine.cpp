@@ -9,6 +9,7 @@
 #include "GameEngine.h"
 #include "RenderEngine.h"
 
+int counter = 0;
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -23,10 +24,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     std::unique_ptr<CRenderEngine> renderEngine = std::make_unique<CRenderEngine>(hInstance);
 
     MSG msg = { 0 };
-
+    //Cube cube;
+    /*cube.set_pos({
+            {-1.0f,  1.0f,  1.0f, 0xff000000 },
+            { 1.0f,  1.0f,  1.0f, 0xff0000ff },
+            {-1.0f, -1.0f,  1.0f, 0xff00ff00 },
+            { 1.0f, -1.0f,  1.0f, 0xff00ffff },
+            {-1.0f,  1.0f, -1.0f, 0xffff0000 },
+            { 1.0f,  1.0f, -1.0f, 0xffff00ff },
+            {-1.0f, -1.0f, -1.0f, 0xffffff00 },
+            { 1.0f, -1.0f, -1.0f, 0xffffffff },
+        });*/
     // Main message loop:
     while (msg.message != (WM_QUIT | WM_CLOSE))
     {
+        counter++;
         if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
         {
             TranslateMessage(&msg);
@@ -34,7 +46,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            renderEngine->Update();
+            renderEngine->Update(counter);
         }
     }
 
