@@ -60,17 +60,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         cubes[i]->SetPosition(rand_float(), abs(rand_float()), rand_float());
         cubes[i]->SetVelocity(0.0, 0.0, 0.0);
         
-        cubes[i]->SetType(rand()%1); // 0 - physics on, 1 - movement tuda-suda, 2 - controls on
+        cubes[i]->SetType(rand()%3); // 0 - physics on, 1 - movement tuda-suda, 2 - controls on
         renderThread->EnqueueCommand(RC_CreateCubeRenderObject, cubes[i]->GetRenderProxy());
         if (cubes[i]->Get_Type() == 0) {
             cubes[i]->SetAcceleration(0.0, -g, 0.0);
         }
-
     }
     float elasticity = 0.7f;
     // Main message loop:
     while (msg.message != (WM_QUIT | WM_CLOSE))
     {
+        if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
         if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
         {
             TranslateMessage(&msg);
@@ -91,25 +91,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 
                 if (cubes[j]->Get_Type() == 0)
                 {
-                    
-                    float impulse[3];
                     float mass = cubes[j]->Get_M();
                     if (cubes[j]->Get_Y() > 0)
                     {
                         for (int i = 0; i < 3; i++) {
-                            velocity[i] = velocity[i] + acceleration[i] * timer.DeltaTime();
-                            impulse[i] = mass * velocity[i];
+                            velocity[i] += acceleration[i] * timer.DeltaTime();
                         }
                     }
                     else if (cubes[j]->Get_Y() <= 0 && velocity[1] < 0)
                     {
                         velocity[1] = -velocity[1] * elasticity;
                     } 
-                    if (velocity[0] * velocity[0] + velocity[1] * velocity[1] + velocity[2] * velocity[2] < 0.01 && (cubes[j]->Get_Y()) < 0.01)
+                    if (velocity[0] * velocity[0] + velocity[1] * velocity[1] + velocity[2] * velocity[2] < 0.1 && abs(cubes[j]->Get_Y()) < 0.1)
                     {
                         velocity[1] += 10.0f;
                     }
-
                 }
                 else if (cubes[j]->Get_Type() == 1) {
                     velocity[0] = sin(t);                    
