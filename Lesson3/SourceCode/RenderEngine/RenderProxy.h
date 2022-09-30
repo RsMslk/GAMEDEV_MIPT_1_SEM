@@ -14,7 +14,8 @@ public:
 		result[2] = m_vPosition[2];
 	}
 	void SetPosition(float position[3]);
-
 	float m_vPosition[3];
+
+	
 };
 

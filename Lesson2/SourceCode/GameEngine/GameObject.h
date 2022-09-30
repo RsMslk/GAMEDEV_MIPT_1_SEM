@@ -22,5 +22,6 @@ protected:
 	RenderProxy* m_pRenderProxy;
 
 	float m_vPosition[3];
+	float[3] Get_V();
 };
 
