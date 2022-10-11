@@ -14,10 +14,15 @@ InputHandler::InputHandler()
 	MapSymbol("left", VK_LEFT);
 	MapSymbol("right", VK_RIGHT);
 	MapSymbol("space", VK_SPACE);
+	//MapSymbol("right_arr", VK_RIGHT)
+
 
 	MapCommandSymbol("GoLeft", eIC_GoLeft, "a");
 	MapCommandSymbol("GoRight", eIC_GoRight, "d");
 	MapCommandSymbol("Jump", eIC_Jump, "space");
+	MapCommandSymbol("ShootRight", eIC_ShootRight, "right");
+	MapCommandSymbol("ShootLeft", eIC_ShootLeft, "left");
+
 
 	LoadConfiguration();
 

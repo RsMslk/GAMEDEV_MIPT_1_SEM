@@ -3,6 +3,8 @@
 #include "ecsPhys.h"
 #include "flecs.h"
 #include "../InputHandler.h"
+//#include "ShootingSystem.h"
+#include "EntitySystem.h"
 
 void register_ecs_control_systems(flecs::world &ecs)
 {
@@ -32,5 +34,24 @@ void register_ecs_control_systems(flecs::world &ecs)
             vel.y = jump.val;
       });
     });
+
+  //ecs.system<const Controllable>()
+  //    .each([&](const Controllable)
+  //        {
+  //            inputQuery.each([&](InputHandlerPtr input)
+  //                {
+  //                    //if (plane.x * pos.x + plane.y * pos.y + plane.z * pos.z < plane.w + planeEpsilon)
+  //                    if (input.ptr->GetInputState().test(eIC_ShootRight))
+  //                    {
+  //                        
+  //                        //auto bullet = ecs.entity()
+  //                        //    .set(Position{ 1.0, 1.0, 0.0 })
+  //                        //    .set(Velocity{ vel.x, vel.y + 0.1f, vel.z + 0.1f });
+  //                            //.add<Shooted>();
+  //                            //.add<CubeMesh>();
+  //                    }
+  //                });
+  //        });
+
 }
 

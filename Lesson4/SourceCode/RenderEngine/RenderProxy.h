@@ -15,6 +15,10 @@ public:
 	}
 	void SetPosition(float position[3]);
 
+	bool Is_Visible();
+	void Set_is_Visible(bool in);
+
 	float m_vPosition[3];
+	bool m_is_Visible;
 };
 

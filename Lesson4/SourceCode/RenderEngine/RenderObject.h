@@ -21,7 +21,10 @@ public:
 
 	void GetPosition(float* result) { m_pRenderProxy->GetPosition(result); }
 	IRenderData* GetRenderData() const { return m_pRenderData; }
+	bool Is_Visible() { return m_pRenderProxy->Is_Visible(); }
 	void SetRenderData(IRenderData* renderData) { m_pRenderData = renderData; }
+	void Set_is_Visible(bool in) { m_pRenderProxy->Set_is_Visible(in); }
+	
 
 protected:
 	RenderProxy* m_pRenderProxy;

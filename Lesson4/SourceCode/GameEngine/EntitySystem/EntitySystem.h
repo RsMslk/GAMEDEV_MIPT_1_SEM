@@ -9,7 +9,7 @@ class EntitySystem
 public:
 	EntitySystem() = delete;
 	EntitySystem(RenderEngine* renderEngine, InputHandler* inputHandler);
-
+	
 	void Update();
 private:
 	flecs::world ecs;

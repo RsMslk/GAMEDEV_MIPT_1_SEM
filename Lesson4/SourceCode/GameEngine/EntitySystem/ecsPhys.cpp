@@ -66,5 +66,11 @@ void register_ecs_phys_systems(flecs::world &ecs)
       pos.y += rand_flt(-shiver.val, shiver.val);
       pos.z += rand_flt(-shiver.val, shiver.val);
     });
+
+  /*ecs.system<Position>()
+    .each()
+    {
+
+    };*/
 }
 
